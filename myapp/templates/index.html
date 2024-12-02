@@ -1,0 +1,21 @@
+{% load translate_filters %} <!-- translate  -->
+        <form action="{% url 'set_language' %}" method="post" >
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ request.path }}">
+            <!-- Language Links -->
+                    <button type="submit" name="language" value="en" >
+                        English
+                    </button>
+                    <button type="submit" name="language" value="my">
+                        မြန်မာ
+                    </button>
+        </form>
+{% if category %}
+{% for c in category %}
+    <p>Name: {{ c.name }}</p>
+    <p>Description: {{ c.description }}</p>
+    <hr>
+{% endfor %}
+{% else %}
+<p>No categories available.</p>
+{% endif %}
